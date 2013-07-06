@@ -155,16 +155,30 @@ namespace rtl1090XHSI
         private void timer1_Tick(object sender, EventArgs e)
         {
             WebClient client = new WebClient();
-            Stream stream = client.OpenRead("http://localhost:31008/tableb");
-            StreamReader reader = new StreamReader(stream);
             String line, filterline = "";
-            while((line = reader.ReadLine()) != null)
+            try
             {
-                if (line.Substring(0, txtICAO.Text.Length).Equals(txtICAO.Text))
+                Stream stream = client.OpenRead("http://localhost:31008/tableb");
+                StreamReader reader = new StreamReader(stream);
+                while ((line = reader.ReadLine()) != null)
                 {
-                    filterline = line;
-                    break;
+                    if (line.Substring(0, txtICAO.Text.Length).Equals(txtICAO.Text))
+                    {
+                        filterline = line;
+                        break;
+                    }
                 }
+                reader.Close();
+                stream.Close();
+            }
+            catch (System.Net.WebException exception)
+            {
+                textBox1.Text = "RTL1090 is not running!";
+                timer1.Enabled = false;
+                return;
+            }
+            finally
+            {
             }
             textBox1.Text = filterline;
             if (filterline.Length > 0)
