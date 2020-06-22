@@ -262,7 +262,7 @@ namespace rtl1090XHSI
             setSimData(send_buffer, 9, SIM_FLIGHTMODEL_POSITION_PHI, smoothval[ADSB_BANKANGLE]);
             setSimData(send_buffer, 10, SIM_FLIGHTMODEL_POSITION_ELEVATION, smoothval[ADSB_ALT] * 0.3048f);
             setSimData(send_buffer, 11, SIM_FLIGHTMODEL_POSITION_Y_AGL, smoothval[ADSB_ALT] * 0.3048f);
-            setSimData(send_buffer, 12, SIM_COCKPIT2_GAUGES_INDICATORS_AIRSPEED_KTS_PILOT, smoothval[ADSB_TAS]);
+            setSimData(send_buffer, 12, SIM_COCKPIT2_GAUGES_INDICATORS_AIRSPEED_KTS_PILOT, smoothval[ADSB_IAS]);
             setSimData(send_buffer, 13, SIM_COCKPIT2_GAUGES_INDICATORS_ALTITUDE_FT_PILOT, smoothval[ADSB_ALT]);
             setSimData(send_buffer, 14, SIM_COCKPIT2_GAUGES_INDICATORS_VVI_FPM_PILOT, smoothval[ADSB_VRATE]);
             setSimData(send_buffer, 15, SIM_COCKPIT_SWITCHES_EFIS_SHOWS_AIRPORTS, 1.0f);
